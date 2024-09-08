@@ -1566,7 +1566,9 @@ class MSPy:
             return -3
         else:
             if (not dataHandler['unsupported']):
-                processor = MSPy.__dict__.get("process_" + MSPy.MSPCodes2Str[code])
+                processor = None
+                if code in MSPCodes.values():
+                    processor = MSPy.__dict__.get("process_" + MSPy.MSPCodes2Str[code])
                 if processor: # if nothing is found, should be None
                     try:
                         if data:
